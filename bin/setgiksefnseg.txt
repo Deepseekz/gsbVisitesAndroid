@@ -1,0 +1,91 @@
+<?php if (($module == "slam1") or ($module == "")) : ?>
+<div id="slam1">
+    <h3>
+      SLAM1
+    </h3>
+    <P>
+      Exploitation d’un schéma de données
+      Ce module aborde les savoirs et savoir-faire de base liés à la modélisation de
+      données et à l’implémentation d’une base de données associée à une solution logicielle.
+    </P>
+</div>
+<?php endif; ?>
+<?php if (($module == "slam2") or ($module == "")) : ?>
+<div id="slam2">
+    <h3>
+      SLAM2
+    </h3>
+    <P>
+      Programmation objet
+      Ce module aborde les savoirs et savoir-faire liés à la programmation d’une solution applicative
+      dans un environnement de développement orienté objet. Il s’intéresse notamment à la configuration et à l’utilisation
+      rationnelle d’un environnement de développement.
+    </P>
+</div>
+<?php endif; ?>
+<?php if (($module == "slam3") or ($module == "")) : ?>
+<div id="slam3">
+    <h3>
+      SLAM3
+    </h3>
+    <P>
+      Conception et adaptation d’une base de données
+      Ce module aborde les savoirs et savoir-faire liés à la conception et à
+      l’adaptation d’une base de données et à la mise en œuvre des outils de programmation associés.
+    </P>
+</div>
+<?php endif; ?>
+<?php if (($module == "slam4") or ($module == "")) : ?>
+<div id="slam4">
+    <h3>
+      SLAM4
+    </h3>
+    <P>
+      Réalisation et maintenance de composants logiciels
+      Ce module aborde les savoirs et savoir-faire liés à la mise en œuvre
+      d’environnements de développement. Il s’intéresse notamment à l’utilisation et à l’enrichissement de bibliothèques de
+      composants logiciels et à la programmation, notamment au sein d’un framework.
+    </P>
+</div>
+<?php endif; ?>
+<?php if (($module == "slam5") or ($module == "")) : ?>
+<div id="slam5">
+    <h3>
+      SLAM5
+    </h3>
+    <P>
+      Conception et adaptation de solutions applicatives
+      Ce module aborde les savoirs et savoirs faire liés à la participation
+      à des projets de conception d’une solution applicative ainsi qu’aux activités de maintien en condition opérationnelle des
+      services associés et de réponse aux besoins d’évolution.
+    </P>
+</div>
+<?php endif; ?>
+
+
+
+
+
+
+
+public function modules($module="") {
+    if ($module != "")
+  {
+      $verification = FALSE;
+      $option = substr($module, 0, 4);
+      $indice = (int) substr($module, -1);
+      if ($option == "slam")
+      {
+        if (($indice > 0) and ($indice < 6))
+        {
+          $verification = TRUE;
+        }
+      }
+      if (! $verification)
+      {
+        $this->Flash->error("paramètre invalide : /sios/modules/slam[1..5]");
+        return $this->redirect(['action' => 'modules']);
+      }
+    }
+        $this->set('module', $module);
+    }
