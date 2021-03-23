@@ -116,7 +116,7 @@ class VisitesController extends AppController
         $this->set(compact('visite', 'visiteurs', 'praticiens', 'motifs', 'produits'));
         
         if ($this->request->is(['post', 'put'])) {
-            $recipe = $this->Visites->patchEntity($visite, $this->request->getData());
+            $visite = $this->Visites->patchEntity($visite, $this->request->getData());
             if ($this->Visites->save($visite)) {
                 $message = 'Saved';
             } else {
@@ -145,6 +145,15 @@ class VisitesController extends AppController
         } else {
             $this->Flash->error(__('The visite could not be deleted. Please, try again.'));
         }
+        
+        $message = 'Deleted';
+        if (!$this->Visites->delete($visite)) {
+            $message = 'Error';
+        }
+        $this->set([
+            'message' => $message,
+            '_serialize' => ['message']
+        ]);
 
         return $this->redirect(['action' => 'index']);
     }
