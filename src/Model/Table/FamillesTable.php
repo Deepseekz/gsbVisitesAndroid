@@ -56,7 +56,8 @@ class FamillesTable extends Table
         $validator
             ->scalar('libelle')
             ->maxLength('libelle', 50)
-            ->allowEmptyString('libelle');
+            ->requirePresence('libelle', 'create')
+            ->notEmptyString('libelle');
 
         return $validator;
     }

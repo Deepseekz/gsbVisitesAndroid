@@ -55,8 +55,12 @@ class MotifsTable extends Table
 
         $validator
             ->scalar('libelle')
-            ->maxLength('libelle', 50)
+            ->maxLength('libelle', 10)
             ->allowEmptyString('libelle');
+
+        $validator
+            ->integer('idVisites')
+            ->allowEmptyString('idVisites');
 
         return $validator;
     }

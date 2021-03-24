@@ -38,11 +38,12 @@ class PraticiensSpecialitesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Praticiens', [
-            'foreignKey' => 'praticien_id',
+            'foreignKey' => 'practicien_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Specialites', [
-            'foreignKey' => 'specialite_id'
+            'foreignKey' => 'specialite_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -55,6 +56,10 @@ class PraticiensSpecialitesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
+
+        $validator
             ->scalar('diplome')
             ->maxLength('diplome', 50)
             ->allowEmptyString('diplome');
@@ -62,10 +67,6 @@ class PraticiensSpecialitesTable extends Table
         $validator
             ->decimal('coefPres')
             ->allowEmptyString('coefPres');
-
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', null, 'create');
 
         return $validator;
     }
@@ -79,7 +80,7 @@ class PraticiensSpecialitesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['praticien_id'], 'Praticiens'));
+        $rules->add($rules->existsIn(['practicien_id'], 'Praticiens'));
         $rules->add($rules->existsIn(['specialite_id'], 'Specialites'));
 
         return $rules;

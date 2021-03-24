@@ -6,13 +6,13 @@ use Cake\ORM\Entity;
 /**
  * ProduitsVisite Entity
  *
- * @property int|null $visite_id
- * @property int|null $produit_id
- * @property int|null $quantite
  * @property int $id
+ * @property float|null $quantite
+ * @property int $produit_id
+ * @property int $visite_id
  *
- * @property \App\Model\Entity\Visite $visite
  * @property \App\Model\Entity\Produit $produit
+ * @property \App\Model\Entity\Visite $visite
  */
 class ProduitsVisite extends Entity
 {
@@ -26,10 +26,10 @@ class ProduitsVisite extends Entity
      * @var array
      */
     protected $_accessible = [
-        'visite_id' => true,
-        'produit_id' => true,
         'quantite' => true,
-        'visite' => true,
-        'produit' => true
+        'produit_id' => true,
+        'visite_id' => true,
+        'produit' => true,
+        'visite' => true
     ];
 }

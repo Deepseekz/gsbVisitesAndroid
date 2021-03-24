@@ -25,6 +25,11 @@ class PraticiensController extends AppController
         $praticiens = $this->paginate($this->Praticiens);
 
         $this->set(compact('praticiens'));
+        
+        $this->set([
+            'praticiens' => $praticiens,
+            '_serialize' => ['praticiens']
+        ]);
     }
 
     /**
@@ -37,10 +42,15 @@ class PraticiensController extends AppController
     public function view($id = null)
     {
         $praticien = $this->Praticiens->get($id, [
-            'contain' => ['Metiers', 'Specialites', 'Visites']
+            'contain' => ['Metiers', 'Specialites']
         ]);
 
         $this->set('praticien', $praticien);
+        
+        $this->set([
+            'praticien' => $praticien,
+            '_serialize' => ['praticien']
+        ]);
     }
 
     /**
@@ -63,6 +73,17 @@ class PraticiensController extends AppController
         $metiers = $this->Praticiens->Metiers->find('list', ['limit' => 200]);
         $specialites = $this->Praticiens->Specialites->find('list', ['limit' => 200]);
         $this->set(compact('praticien', 'metiers', 'specialites'));
+        
+        if ($this->Praticiens->save($praticien)) {
+            $message = 'Saved';
+        } else {
+            $message = 'Error';
+        }
+        $this->set([
+            'message' => $message,
+            'praticien' => $praticien,
+            '_serialize' => ['message', 'praticien']
+        ]);
     }
 
     /**
@@ -89,6 +110,19 @@ class PraticiensController extends AppController
         $metiers = $this->Praticiens->Metiers->find('list', ['limit' => 200]);
         $specialites = $this->Praticiens->Specialites->find('list', ['limit' => 200]);
         $this->set(compact('praticien', 'metiers', 'specialites'));
+        
+        if ($this->request->is(['post', 'put'])) {
+            $praticien = $this->Praticiens->patchEntity($praticien, $this->request->getData());
+            if ($this->Praticiens->save($praticien)) {
+                $message = 'Saved';
+            } else {
+                $message = 'Error';
+            }
+        }
+        $this->set([
+            'message' => $message,
+            '_serialize' => ['message']
+        ]);
     }
 
     /**
@@ -107,6 +141,15 @@ class PraticiensController extends AppController
         } else {
             $this->Flash->error(__('The praticien could not be deleted. Please, try again.'));
         }
+        
+        $message = 'Deleted';
+        if (!$this->Praticiens->delete($praticien)) {
+            $message = 'Error';
+        }
+        $this->set([
+            'message' => $message,
+            '_serialize' => ['message']
+        ]);
 
         return $this->redirect(['action' => 'index']);
     }

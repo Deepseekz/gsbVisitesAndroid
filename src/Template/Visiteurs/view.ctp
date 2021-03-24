@@ -27,8 +27,8 @@
             <td><?= h($visiteur->username) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Passeword') ?></th>
-            <td><?= h($visiteur->passeword) ?></td>
+            <th scope="row"><?= __('Password') ?></th>
+            <td><?= h($visiteur->password) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Nom') ?></th>
@@ -63,9 +63,9 @@
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('DateVisite') ?></th>
                 <th scope="col"><?= __('Commentaire') ?></th>
-                <th scope="col"><?= __('Visiteur Id') ?></th>
-                <th scope="col"><?= __('Praticien Id') ?></th>
+                <th scope="col"><?= __('Practicien Id') ?></th>
                 <th scope="col"><?= __('Motif Id') ?></th>
+                <th scope="col"><?= __('Visiteur Id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($visiteur->visites as $visites): ?>
@@ -73,9 +73,9 @@
                 <td><?= h($visites->id) ?></td>
                 <td><?= h($visites->dateVisite) ?></td>
                 <td><?= h($visites->commentaire) ?></td>
-                <td><?= h($visites->visiteur_id) ?></td>
-                <td><?= h($visites->praticien_id) ?></td>
+                <td><?= h($visites->practicien_id) ?></td>
                 <td><?= h($visites->motif_id) ?></td>
+                <td><?= h($visites->visiteur_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Visites', 'action' => 'view', $visites->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Visites', 'action' => 'edit', $visites->id]) ?>

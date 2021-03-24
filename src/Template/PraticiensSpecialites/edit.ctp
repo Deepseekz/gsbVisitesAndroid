@@ -25,10 +25,10 @@
     <fieldset>
         <legend><?= __('Edit Praticiens Specialite') ?></legend>
         <?php
-            echo $this->Form->control('praticien_id', ['options' => $praticiens]);
-            echo $this->Form->control('specialite_id', ['options' => $specialites, 'empty' => true]);
             echo $this->Form->control('diplome');
             echo $this->Form->control('coefPres');
+            echo $this->Form->control('practicien_id', ['options' => $praticiens]);
+            echo $this->Form->control('specialite_id', ['options' => $specialites]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

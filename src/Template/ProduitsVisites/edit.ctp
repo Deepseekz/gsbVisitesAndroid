@@ -14,10 +14,10 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Produits Visites'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Visites'), ['controller' => 'Visites', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Visite'), ['controller' => 'Visites', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Produits'), ['controller' => 'Produits', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Produit'), ['controller' => 'Produits', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Visites'), ['controller' => 'Visites', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Visite'), ['controller' => 'Visites', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="produitsVisites form large-9 medium-8 columns content">
@@ -25,9 +25,9 @@
     <fieldset>
         <legend><?= __('Edit Produits Visite') ?></legend>
         <?php
-            echo $this->Form->control('visite_id', ['options' => $visites, 'empty' => true]);
-            echo $this->Form->control('produit_id', ['options' => $produits, 'empty' => true]);
             echo $this->Form->control('quantite');
+            echo $this->Form->control('produit_id', ['options' => $produits]);
+            echo $this->Form->control('visite_id', ['options' => $visites]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

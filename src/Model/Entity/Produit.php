@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $libelle
  * @property float|null $prixIndicatif
- * @property int|null $numeroDepot
+ * @property string|null $numeroDepot
  * @property int|null $famille_id
  *
  * @property \App\Model\Entity\Famille $famille

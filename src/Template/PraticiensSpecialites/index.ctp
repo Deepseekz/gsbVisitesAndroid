@@ -19,22 +19,22 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('praticien_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('specialite_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('diplome') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('coefPres') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('practicien_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('specialite_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($praticiensSpecialites as $praticiensSpecialite): ?>
             <tr>
-                <td><?= $praticiensSpecialite->has('praticien') ? $this->Html->link($praticiensSpecialite->praticien->id, ['controller' => 'Praticiens', 'action' => 'view', $praticiensSpecialite->praticien->id]) : '' ?></td>
-                <td><?= $praticiensSpecialite->has('specialite') ? $this->Html->link($praticiensSpecialite->specialite->id, ['controller' => 'Specialites', 'action' => 'view', $praticiensSpecialite->specialite->id]) : '' ?></td>
+                <td><?= $this->Number->format($praticiensSpecialite->id) ?></td>
                 <td><?= h($praticiensSpecialite->diplome) ?></td>
                 <td><?= $this->Number->format($praticiensSpecialite->coefPres) ?></td>
-                <td><?= $this->Number->format($praticiensSpecialite->id) ?></td>
+                <td><?= $praticiensSpecialite->has('praticien') ? $this->Html->link($praticiensSpecialite->praticien->id, ['controller' => 'Praticiens', 'action' => 'view', $praticiensSpecialite->praticien->id]) : '' ?></td>
+                <td><?= $praticiensSpecialite->has('specialite') ? $this->Html->link($praticiensSpecialite->specialite->id, ['controller' => 'Specialites', 'action' => 'view', $praticiensSpecialite->specialite->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $praticiensSpecialite->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $praticiensSpecialite->id]) ?>

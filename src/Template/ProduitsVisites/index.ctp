@@ -8,10 +8,10 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Produits Visite'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Visites'), ['controller' => 'Visites', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Visite'), ['controller' => 'Visites', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Produits'), ['controller' => 'Produits', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Produit'), ['controller' => 'Produits', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Visites'), ['controller' => 'Visites', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Visite'), ['controller' => 'Visites', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="produitsVisites index large-9 medium-8 columns content">
@@ -19,20 +19,20 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('visite_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('produit_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('quantite') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('quantite') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('produit_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('visite_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($produitsVisites as $produitsVisite): ?>
             <tr>
-                <td><?= $produitsVisite->has('visite') ? $this->Html->link($produitsVisite->visite->id, ['controller' => 'Visites', 'action' => 'view', $produitsVisite->visite->id]) : '' ?></td>
-                <td><?= $produitsVisite->has('produit') ? $this->Html->link($produitsVisite->produit->id, ['controller' => 'Produits', 'action' => 'view', $produitsVisite->produit->id]) : '' ?></td>
-                <td><?= $this->Number->format($produitsVisite->quantite) ?></td>
                 <td><?= $this->Number->format($produitsVisite->id) ?></td>
+                <td><?= $this->Number->format($produitsVisite->quantite) ?></td>
+                <td><?= $produitsVisite->has('produit') ? $this->Html->link($produitsVisite->produit->id, ['controller' => 'Produits', 'action' => 'view', $produitsVisite->produit->id]) : '' ?></td>
+                <td><?= $produitsVisite->has('visite') ? $this->Html->link($produitsVisite->visite->id, ['controller' => 'Visites', 'action' => 'view', $produitsVisite->visite->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $produitsVisite->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $produitsVisite->id]) ?>

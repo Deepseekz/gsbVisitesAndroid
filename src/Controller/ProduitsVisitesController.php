@@ -20,7 +20,7 @@ class ProduitsVisitesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Visites', 'Produits']
+            'contain' => ['Produits', 'Visites']
         ];
         $produitsVisites = $this->paginate($this->ProduitsVisites);
 
@@ -37,7 +37,7 @@ class ProduitsVisitesController extends AppController
     public function view($id = null)
     {
         $produitsVisite = $this->ProduitsVisites->get($id, [
-            'contain' => ['Visites', 'Produits']
+            'contain' => ['Produits', 'Visites']
         ]);
 
         $this->set('produitsVisite', $produitsVisite);
@@ -60,9 +60,9 @@ class ProduitsVisitesController extends AppController
             }
             $this->Flash->error(__('The produits visite could not be saved. Please, try again.'));
         }
-        $visites = $this->ProduitsVisites->Visites->find('list', ['limit' => 200]);
         $produits = $this->ProduitsVisites->Produits->find('list', ['limit' => 200]);
-        $this->set(compact('produitsVisite', 'visites', 'produits'));
+        $visites = $this->ProduitsVisites->Visites->find('list', ['limit' => 200]);
+        $this->set(compact('produitsVisite', 'produits', 'visites'));
     }
 
     /**
@@ -86,9 +86,9 @@ class ProduitsVisitesController extends AppController
             }
             $this->Flash->error(__('The produits visite could not be saved. Please, try again.'));
         }
-        $visites = $this->ProduitsVisites->Visites->find('list', ['limit' => 200]);
         $produits = $this->ProduitsVisites->Produits->find('list', ['limit' => 200]);
-        $this->set(compact('produitsVisite', 'visites', 'produits'));
+        $visites = $this->ProduitsVisites->Visites->find('list', ['limit' => 200]);
+        $this->set(compact('produitsVisite', 'produits', 'visites'));
     }
 
     /**

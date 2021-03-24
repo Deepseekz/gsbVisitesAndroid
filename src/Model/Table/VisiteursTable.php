@@ -55,7 +55,7 @@ class VisiteursTable extends Table
 
         $validator
             ->scalar('matricule')
-            ->maxLength('matricule', 10)
+            ->maxLength('matricule', 50)
             ->allowEmptyString('matricule');
 
         $validator
@@ -64,9 +64,9 @@ class VisiteursTable extends Table
             ->allowEmptyString('username');
 
         $validator
-            ->scalar('passeword')
-            ->maxLength('passeword', 256)
-            ->allowEmptyString('passeword');
+            ->scalar('password')
+            ->maxLength('password', 256)
+            ->allowEmptyString('password');
 
         $validator
             ->scalar('nom')
@@ -80,12 +80,12 @@ class VisiteursTable extends Table
 
         $validator
             ->scalar('tel')
-            ->maxLength('tel', 10)
+            ->maxLength('tel', 12)
             ->allowEmptyString('tel');
 
         $validator
             ->scalar('mail')
-            ->maxLength('mail', 150)
+            ->maxLength('mail', 50)
             ->allowEmptyString('mail');
 
         $validator

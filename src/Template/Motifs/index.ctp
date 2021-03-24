@@ -19,6 +19,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('libelle') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('idVisites') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
             <tr>
                 <td><?= $this->Number->format($motif->id) ?></td>
                 <td><?= h($motif->libelle) ?></td>
+                <td><?= $this->Number->format($motif->idVisites) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $motif->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $motif->id]) ?>

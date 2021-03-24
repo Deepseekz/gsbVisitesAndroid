@@ -20,7 +20,7 @@ class VisitesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Visiteurs', 'Praticiens', 'Motifs']
+            'contain' => ['Praticiens', 'Motifs', 'Visiteurs']
         ];
         $visites = $this->paginate($this->Visites);
 
@@ -42,7 +42,7 @@ class VisitesController extends AppController
     public function view($id = null)
     {
         $visite = $this->Visites->get($id, [
-            'contain' => ['Visiteurs', 'Praticiens', 'Motifs', 'Produits']
+            'contain' => ['Praticiens', 'Motifs', 'Visiteurs', 'Produits']
         ]);
 
         $this->set('visite', $visite);
@@ -70,13 +70,13 @@ class VisitesController extends AppController
             }
             $this->Flash->error(__('The visite could not be saved. Please, try again.'));
         }
-        $visiteurs = $this->Visites->Visiteurs->find('list', ['limit' => 200]);
         $praticiens = $this->Visites->Praticiens->find('list', ['limit' => 200]);
         $motifs = $this->Visites->Motifs->find('list', ['limit' => 200]);
+        $visiteurs = $this->Visites->Visiteurs->find('list', ['limit' => 200]);
         $produits = $this->Visites->Produits->find('list', ['limit' => 200]);
-        $this->set(compact('visite', 'visiteurs', 'praticiens', 'motifs', 'produits'));
+        $this->set(compact('visite', 'praticiens', 'motifs', 'visiteurs', 'produits'));
         
-        if ($this->Visites->save($visite)) {
+        if ($this->Visites->save($recipe)) {
             $message = 'Saved';
         } else {
             $message = 'Error';
@@ -109,11 +109,11 @@ class VisitesController extends AppController
             }
             $this->Flash->error(__('The visite could not be saved. Please, try again.'));
         }
-        $visiteurs = $this->Visites->Visiteurs->find('list', ['limit' => 200]);
         $praticiens = $this->Visites->Praticiens->find('list', ['limit' => 200]);
         $motifs = $this->Visites->Motifs->find('list', ['limit' => 200]);
+        $visiteurs = $this->Visites->Visiteurs->find('list', ['limit' => 200]);
         $produits = $this->Visites->Produits->find('list', ['limit' => 200]);
-        $this->set(compact('visite', 'visiteurs', 'praticiens', 'motifs', 'produits'));
+        $this->set(compact('visite', 'praticiens', 'motifs', 'visiteurs', 'produits'));
         
         if ($this->request->is(['post', 'put'])) {
             $visite = $this->Visites->patchEntity($visite, $this->request->getData());

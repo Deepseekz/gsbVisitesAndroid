@@ -134,8 +134,6 @@ class VisiteursController extends AppController
         } else {
             $this->Flash->error(__('The visiteur could not be deleted. Please, try again.'));
         }
-
-        
         
         $message = 'Deleted';
         if (!$this->Visiteurs->delete($visiteur)) {
@@ -145,7 +143,7 @@ class VisiteursController extends AppController
             'message' => $message,
             '_serialize' => ['message']
         ]);
-        
+
         return $this->redirect(['action' => 'index']);
     }
 }

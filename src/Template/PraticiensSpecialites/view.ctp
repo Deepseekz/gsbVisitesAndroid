@@ -21,6 +21,10 @@
     <h3><?= h($praticiensSpecialite->id) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th scope="row"><?= __('Diplome') ?></th>
+            <td><?= h($praticiensSpecialite->diplome) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Praticien') ?></th>
             <td><?= $praticiensSpecialite->has('praticien') ? $this->Html->link($praticiensSpecialite->praticien->id, ['controller' => 'Praticiens', 'action' => 'view', $praticiensSpecialite->praticien->id]) : '' ?></td>
         </tr>
@@ -29,16 +33,12 @@
             <td><?= $praticiensSpecialite->has('specialite') ? $this->Html->link($praticiensSpecialite->specialite->id, ['controller' => 'Specialites', 'action' => 'view', $praticiensSpecialite->specialite->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Diplome') ?></th>
-            <td><?= h($praticiensSpecialite->diplome) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($praticiensSpecialite->id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('CoefPres') ?></th>
             <td><?= $this->Number->format($praticiensSpecialite->coefPres) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($praticiensSpecialite->id) ?></td>
         </tr>
     </table>
 </div>

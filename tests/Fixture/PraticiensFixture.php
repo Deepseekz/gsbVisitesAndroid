@@ -18,16 +18,16 @@ class PraticiensFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => 10, 'autoIncrement' => true, 'null' => false, 'default' => null, 'precision' => null, 'comment' => null, 'unsigned' => null],
         'nom' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
         'prenom' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
-        'tel' => ['type' => 'string', 'length' => 10, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
-        'mail' => ['type' => 'string', 'length' => 320, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
-        'rue' => ['type' => 'string', 'length' => 150, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
-        'codePostal' => ['type' => 'string', 'length' => 8, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
+        'tel' => ['type' => 'string', 'length' => 12, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
+        'mail' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
+        'rue' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
+        'codePostal' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
         'ville' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'French_CI_AS', 'precision' => null, 'comment' => null, 'fixed' => null],
-        'coefNotoriete' => ['type' => 'decimal', 'length' => 15, 'precision' => 2, 'null' => true, 'default' => null, 'comment' => null, 'unsigned' => null],
+        'coefNotoriete' => ['type' => 'integer', 'length' => 10, 'null' => true, 'default' => null, 'precision' => null, 'comment' => null, 'unsigned' => null, 'autoIncrement' => null],
         'metier_id' => ['type' => 'integer', 'length' => 10, 'null' => true, 'default' => null, 'precision' => null, 'comment' => null, 'unsigned' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'FK_praticiens_metiers' => ['type' => 'foreign', 'columns' => ['metier_id'], 'references' => ['metiers', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'FK_Practiciens_Metiers' => ['type' => 'foreign', 'columns' => ['metier_id'], 'references' => ['metiers', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -43,12 +43,12 @@ class PraticiensFixture extends TestFixture
                 'id' => 1,
                 'nom' => 'Lorem ipsum dolor sit amet',
                 'prenom' => 'Lorem ipsum dolor sit amet',
-                'tel' => 'Lorem ip',
+                'tel' => 'Lorem ipsu',
                 'mail' => 'Lorem ipsum dolor sit amet',
                 'rue' => 'Lorem ipsum dolor sit amet',
-                'codePostal' => 'Lorem ',
+                'codePostal' => 'Lorem ipsum dolor sit amet',
                 'ville' => 'Lorem ipsum dolor sit amet',
-                'coefNotoriete' => 1.5,
+                'coefNotoriete' => 1,
                 'metier_id' => 1
             ],
         ];

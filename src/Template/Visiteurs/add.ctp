@@ -19,7 +19,7 @@
         <?php
             echo $this->Form->control('matricule');
             echo $this->Form->control('username');
-            echo $this->Form->control('passeword');
+            echo $this->Form->control('password');
             echo $this->Form->control('nom');
             echo $this->Form->control('prenom');
             echo $this->Form->control('tel');

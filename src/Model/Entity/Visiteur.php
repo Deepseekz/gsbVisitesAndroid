@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $matricule
  * @property string|null $username
- * @property string|null $passeword
+ * @property string|null $password
  * @property string|null $nom
  * @property string|null $prenom
  * @property string|null $tel
@@ -32,12 +32,21 @@ class Visiteur extends Entity
     protected $_accessible = [
         'matricule' => true,
         'username' => true,
-        'passeword' => true,
+        'password' => true,
         'nom' => true,
         'prenom' => true,
         'tel' => true,
         'mail' => true,
         'dateEmbauche' => true,
         'visites' => true
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array
+     */
+    protected $_hidden = [
+        'password'
     ];
 }

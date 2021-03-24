@@ -46,10 +46,13 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
-    // Register scoped middleware for in scopes.
+    
+    
+    // manually added
     $routes->setExtensions(['json']);
     $routes->resources('Recipes');
     
+    // Register scoped middleware for in scopes.
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
         'httpOnly' => true
     ]));
@@ -58,7 +61,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * Apply a middleware to the current route scope.
      * Requires middleware to be registered via `Application::routes()` with `registerMiddleware()`
      */
-    // $routes->applyMiddleware('csrf');
+    $routes->applyMiddleware('csrf');
 
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -105,5 +108,3 @@ Router::scope('/', function (RouteBuilder $routes) {
  * });
  * ```
  */
-//Dans config/routes.php
-

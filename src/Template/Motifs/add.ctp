@@ -18,6 +18,7 @@
         <legend><?= __('Add Motif') ?></legend>
         <?php
             echo $this->Form->control('libelle');
+            echo $this->Form->control('idVisites');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

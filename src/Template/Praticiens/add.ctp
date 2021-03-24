@@ -10,8 +10,6 @@
         <li><?= $this->Html->link(__('List Praticiens'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Metiers'), ['controller' => 'Metiers', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Metier'), ['controller' => 'Metiers', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Visites'), ['controller' => 'Visites', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Visite'), ['controller' => 'Visites', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Specialites'), ['controller' => 'Specialites', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Specialite'), ['controller' => 'Specialites', 'action' => 'add']) ?></li>
     </ul>

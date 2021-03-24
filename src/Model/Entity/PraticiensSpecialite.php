@@ -6,11 +6,11 @@ use Cake\ORM\Entity;
 /**
  * PraticiensSpecialite Entity
  *
- * @property int $praticien_id
- * @property int|null $specialite_id
+ * @property int $id
  * @property string|null $diplome
  * @property float|null $coefPres
- * @property int $id
+ * @property int $practicien_id
+ * @property int $specialite_id
  *
  * @property \App\Model\Entity\Praticien $praticien
  * @property \App\Model\Entity\Specialite $specialite
@@ -27,10 +27,10 @@ class PraticiensSpecialite extends Entity
      * @var array
      */
     protected $_accessible = [
-        'praticien_id' => true,
-        'specialite_id' => true,
         'diplome' => true,
         'coefPres' => true,
+        'practicien_id' => true,
+        'specialite_id' => true,
         'praticien' => true,
         'specialite' => true
     ];

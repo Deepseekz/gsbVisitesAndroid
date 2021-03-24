@@ -14,11 +14,10 @@ use Cake\ORM\Entity;
  * @property string|null $rue
  * @property string|null $codePostal
  * @property string|null $ville
- * @property float|null $coefNotoriete
+ * @property int|null $coefNotoriete
  * @property int|null $metier_id
  *
  * @property \App\Model\Entity\Metier $metier
- * @property \App\Model\Entity\Visite[] $visites
  * @property \App\Model\Entity\Specialite[] $specialites
  */
 class Praticien extends Entity
@@ -43,7 +42,6 @@ class Praticien extends Entity
         'coefNotoriete' => true,
         'metier_id' => true,
         'metier' => true,
-        'visites' => true,
         'specialites' => true
     ];
 }

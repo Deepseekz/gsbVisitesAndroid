@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * ProduitsVisites Model
  *
- * @property \App\Model\Table\VisitesTable&\Cake\ORM\Association\BelongsTo $Visites
  * @property \App\Model\Table\ProduitsTable&\Cake\ORM\Association\BelongsTo $Produits
+ * @property \App\Model\Table\VisitesTable&\Cake\ORM\Association\BelongsTo $Visites
  *
  * @method \App\Model\Entity\ProduitsVisite get($primaryKey, $options = [])
  * @method \App\Model\Entity\ProduitsVisite newEntity($data = null, array $options = [])
@@ -37,11 +37,13 @@ class ProduitsVisitesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Visites', [
-            'foreignKey' => 'visite_id'
-        ]);
         $this->belongsTo('Produits', [
-            'foreignKey' => 'produit_id'
+            'foreignKey' => 'produit_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Visites', [
+            'foreignKey' => 'visite_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -54,12 +56,12 @@ class ProduitsVisitesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('quantite')
-            ->allowEmptyString('quantite');
-
-        $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
+
+        $validator
+            ->decimal('quantite')
+            ->allowEmptyString('quantite');
 
         return $validator;
     }
@@ -73,8 +75,8 @@ class ProduitsVisitesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['visite_id'], 'Visites'));
         $rules->add($rules->existsIn(['produit_id'], 'Produits'));
+        $rules->add($rules->existsIn(['visite_id'], 'Visites'));
 
         return $rules;
     }

@@ -10,7 +10,6 @@ use Cake\Validation\Validator;
  * Praticiens Model
  *
  * @property \App\Model\Table\MetiersTable&\Cake\ORM\Association\BelongsTo $Metiers
- * @property \App\Model\Table\VisitesTable&\Cake\ORM\Association\HasMany $Visites
  * @property \App\Model\Table\SpecialitesTable&\Cake\ORM\Association\BelongsToMany $Specialites
  *
  * @method \App\Model\Entity\Praticien get($primaryKey, $options = [])
@@ -40,9 +39,6 @@ class PraticiensTable extends Table
 
         $this->belongsTo('Metiers', [
             'foreignKey' => 'metier_id'
-        ]);
-        $this->hasMany('Visites', [
-            'foreignKey' => 'praticien_id'
         ]);
         $this->belongsToMany('Specialites', [
             'foreignKey' => 'praticien_id',
@@ -75,22 +71,22 @@ class PraticiensTable extends Table
 
         $validator
             ->scalar('tel')
-            ->maxLength('tel', 10)
+            ->maxLength('tel', 12)
             ->allowEmptyString('tel');
 
         $validator
             ->scalar('mail')
-            ->maxLength('mail', 320)
+            ->maxLength('mail', 50)
             ->allowEmptyString('mail');
 
         $validator
             ->scalar('rue')
-            ->maxLength('rue', 150)
+            ->maxLength('rue', 50)
             ->allowEmptyString('rue');
 
         $validator
             ->scalar('codePostal')
-            ->maxLength('codePostal', 8)
+            ->maxLength('codePostal', 50)
             ->allowEmptyString('codePostal');
 
         $validator
@@ -99,7 +95,7 @@ class PraticiensTable extends Table
             ->allowEmptyString('ville');
 
         $validator
-            ->decimal('coefNotoriete')
+            ->integer('coefNotoriete')
             ->allowEmptyString('coefNotoriete');
 
         return $validator;

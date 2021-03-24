@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string|null $libelle
+ * @property int|null $idVisites
  *
  * @property \App\Model\Entity\Visite[] $visites
  */
@@ -24,6 +25,7 @@ class Motif extends Entity
      */
     protected $_accessible = [
         'libelle' => true,
+        'idVisites' => true,
         'visites' => true
     ];
 }

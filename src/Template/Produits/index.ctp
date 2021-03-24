@@ -33,7 +33,7 @@
                 <td><?= $this->Number->format($produit->id) ?></td>
                 <td><?= h($produit->libelle) ?></td>
                 <td><?= $this->Number->format($produit->prixIndicatif) ?></td>
-                <td><?= $this->Number->format($produit->numeroDepot) ?></td>
+                <td><?= h($produit->numeroDepot) ?></td>
                 <td><?= $produit->has('famille') ? $this->Html->link($produit->famille->id, ['controller' => 'Familles', 'action' => 'view', $produit->famille->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $produit->id]) ?>

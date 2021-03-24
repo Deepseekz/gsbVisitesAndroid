@@ -9,9 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Visites Model
  *
- * @property \App\Model\Table\VisiteursTable&\Cake\ORM\Association\BelongsTo $Visiteurs
  * @property \App\Model\Table\PraticiensTable&\Cake\ORM\Association\BelongsTo $Praticiens
  * @property \App\Model\Table\MotifsTable&\Cake\ORM\Association\BelongsTo $Motifs
+ * @property \App\Model\Table\VisiteursTable&\Cake\ORM\Association\BelongsTo $Visiteurs
  * @property \App\Model\Table\ProduitsTable&\Cake\ORM\Association\BelongsToMany $Produits
  *
  * @method \App\Model\Entity\Visite get($primaryKey, $options = [])
@@ -39,14 +39,14 @@ class VisitesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Visiteurs', [
-            'foreignKey' => 'visiteur_id'
-        ]);
         $this->belongsTo('Praticiens', [
-            'foreignKey' => 'praticien_id'
+            'foreignKey' => 'practicien_id'
         ]);
         $this->belongsTo('Motifs', [
             'foreignKey' => 'motif_id'
+        ]);
+        $this->belongsTo('Visiteurs', [
+            'foreignKey' => 'visiteur_id'
         ]);
         $this->belongsToMany('Produits', [
             'foreignKey' => 'visite_id',
@@ -73,6 +73,7 @@ class VisitesTable extends Table
 
         $validator
             ->scalar('commentaire')
+            ->maxLength('commentaire', 50)
             ->allowEmptyString('commentaire');
 
         return $validator;
@@ -87,9 +88,9 @@ class VisitesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['visiteur_id'], 'Visiteurs'));
-        $rules->add($rules->existsIn(['praticien_id'], 'Praticiens'));
+        $rules->add($rules->existsIn(['practicien_id'], 'Praticiens'));
         $rules->add($rules->existsIn(['motif_id'], 'Motifs'));
+        $rules->add($rules->existsIn(['visiteur_id'], 'Visiteurs'));
 
         return $rules;
     }

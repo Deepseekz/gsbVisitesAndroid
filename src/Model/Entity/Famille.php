@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * Famille Entity
  *
  * @property int $id
- * @property string|null $libelle
+ * @property string $libelle
  *
  * @property \App\Model\Entity\Produit[] $produits
  */

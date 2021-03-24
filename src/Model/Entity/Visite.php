@@ -9,13 +9,13 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property \Cake\I18n\FrozenDate|null $dateVisite
  * @property string|null $commentaire
- * @property int|null $visiteur_id
- * @property int|null $praticien_id
+ * @property int|null $practicien_id
  * @property int|null $motif_id
+ * @property int|null $visiteur_id
  *
- * @property \App\Model\Entity\Visiteur $visiteur
  * @property \App\Model\Entity\Praticien $praticien
  * @property \App\Model\Entity\Motif $motif
+ * @property \App\Model\Entity\Visiteur $visiteur
  * @property \App\Model\Entity\Produit[] $produits
  */
 class Visite extends Entity
@@ -32,12 +32,12 @@ class Visite extends Entity
     protected $_accessible = [
         'dateVisite' => true,
         'commentaire' => true,
-        'visiteur_id' => true,
-        'praticien_id' => true,
+        'practicien_id' => true,
         'motif_id' => true,
-        'visiteur' => true,
+        'visiteur_id' => true,
         'praticien' => true,
         'motif' => true,
+        'visiteur' => true,
         'produits' => true
     ];
 }

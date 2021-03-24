@@ -8,12 +8,12 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Visite'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Visiteurs'), ['controller' => 'Visiteurs', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Visiteur'), ['controller' => 'Visiteurs', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Praticiens'), ['controller' => 'Praticiens', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Praticien'), ['controller' => 'Praticiens', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Motifs'), ['controller' => 'Motifs', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Motif'), ['controller' => 'Motifs', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Visiteurs'), ['controller' => 'Visiteurs', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Visiteur'), ['controller' => 'Visiteurs', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Produits'), ['controller' => 'Produits', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Produit'), ['controller' => 'Produits', 'action' => 'add']) ?></li>
     </ul>
@@ -25,9 +25,10 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('dateVisite') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('visiteur_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('praticien_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('commentaire') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('practicien_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('motif_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('visiteur_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -36,9 +37,10 @@
             <tr>
                 <td><?= $this->Number->format($visite->id) ?></td>
                 <td><?= h($visite->dateVisite) ?></td>
-                <td><?= $visite->has('visiteur') ? $this->Html->link($visite->visiteur->id, ['controller' => 'Visiteurs', 'action' => 'view', $visite->visiteur->id]) : '' ?></td>
+                <td><?= h($visite->commentaire) ?></td>
                 <td><?= $visite->has('praticien') ? $this->Html->link($visite->praticien->id, ['controller' => 'Praticiens', 'action' => 'view', $visite->praticien->id]) : '' ?></td>
                 <td><?= $visite->has('motif') ? $this->Html->link($visite->motif->id, ['controller' => 'Motifs', 'action' => 'view', $visite->motif->id]) : '' ?></td>
+                <td><?= $visite->has('visiteur') ? $this->Html->link($visite->visiteur->id, ['controller' => 'Visiteurs', 'action' => 'view', $visite->visiteur->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $visite->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $visite->id]) ?>

@@ -69,7 +69,8 @@ class ProduitsTable extends Table
             ->allowEmptyString('prixIndicatif');
 
         $validator
-            ->integer('numeroDepot')
+            ->scalar('numeroDepot')
+            ->maxLength('numeroDepot', 50)
             ->allowEmptyString('numeroDepot');
 
         return $validator;

@@ -26,6 +26,10 @@
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($motif->id) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('IdVisites') ?></th>
+            <td><?= $this->Number->format($motif->idVisites) ?></td>
+        </tr>
     </table>
     <div class="related">
         <h4><?= __('Related Visites') ?></h4>
@@ -35,9 +39,9 @@
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('DateVisite') ?></th>
                 <th scope="col"><?= __('Commentaire') ?></th>
-                <th scope="col"><?= __('Visiteur Id') ?></th>
-                <th scope="col"><?= __('Praticien Id') ?></th>
+                <th scope="col"><?= __('Practicien Id') ?></th>
                 <th scope="col"><?= __('Motif Id') ?></th>
+                <th scope="col"><?= __('Visiteur Id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($motif->visites as $visites): ?>
@@ -45,9 +49,9 @@
                 <td><?= h($visites->id) ?></td>
                 <td><?= h($visites->dateVisite) ?></td>
                 <td><?= h($visites->commentaire) ?></td>
-                <td><?= h($visites->visiteur_id) ?></td>
-                <td><?= h($visites->praticien_id) ?></td>
+                <td><?= h($visites->practicien_id) ?></td>
                 <td><?= h($visites->motif_id) ?></td>
+                <td><?= h($visites->visiteur_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Visites', 'action' => 'view', $visites->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Visites', 'action' => 'edit', $visites->id]) ?>
