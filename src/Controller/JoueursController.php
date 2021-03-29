@@ -22,7 +22,7 @@ class JoueursController extends AppController {
 
         $joueurs->paginate = [
             'contain' => ['Equipes'],
-            'order' => ['nom' => 'ASC']];
+            'order' => ['licence' => 'ASC']];
 
         $joueurs = $this->paginate($this->Joueurs);
 
